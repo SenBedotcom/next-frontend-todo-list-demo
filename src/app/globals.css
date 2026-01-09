@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0c0a09;
-  --foreground: #fafaf9;
+  --background: #fff5f8;
+  --foreground: #5c4a5a;
+  --pink-light: #ffd6e7;
+  --pink-main: #ff8fbc;
+  --pink-dark: #e75a97;
+  --lavender: #d4c4fb;
+  --mint: #b8f5d8;
+  --peach: #ffe4d6;
+  --cream: #fff9e6;
+  --text-dark: #5c4a5a;
+  --text-light: #8b7a89;
 }
 
 @theme inline {
@@ -22,98 +31,140 @@ body {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(10px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-15px) rotate(5deg);
   }
 }
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.5;
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: translateY(0);
   }
   50% {
-    opacity: 0.8;
+    transform: translateY(-5px);
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
   }
-  100% {
-    background-position: 200% 0;
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes pulse-heart {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
   }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.4s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
   opacity: 0;
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+.animate-bounce-soft {
+  animation: bounce-soft 2s ease-in-out infinite;
 }
 
-.animate-shimmer {
-  animation: shimmer 2s linear infinite;
-  background-size: 200% 100%;
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
 }
 
-/* Geometric Background Pattern */
-.bg-pattern {
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.animate-pulse-heart {
+  animation: pulse-heart 1s ease-in-out infinite;
+}
+
+/* Kawaii Background Pattern - Dots */
+.bg-kawaii-dots {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(249, 115, 22, 0.03) 0%, transparent 50%),
-    linear-gradient(135deg, transparent 40%, rgba(251, 191, 36, 0.02) 50%, transparent 60%);
+    radial-gradient(circle, #ffd6e7 1px, transparent 1px),
+    radial-gradient(circle, #d4c4fb 1px, transparent 1px);
+  background-size: 30px 30px, 50px 50px;
+  background-position: 0 0, 15px 15px;
 }
 
-/* Grid Pattern */
-.bg-grid {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
+/* Soft cloud-like gradient */
+.bg-kawaii-gradient {
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(255, 214, 231, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(212, 196, 251, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(184, 245, 216, 0.3) 0%, transparent 60%),
+    linear-gradient(180deg, #fff5f8 0%, #fff9e6 100%);
 }
 
-/* Scrollbar Styling */
+/* Scrollbar Styling - Kawaii */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #fff5f8;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(251, 191, 36, 0.3);
-  border-radius: 3px;
+  background: linear-gradient(180deg, #ffd6e7, #ff8fbc);
+  border-radius: 10px;
+  border: 2px solid #fff5f8;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(251, 191, 36, 0.5);
+  background: linear-gradient(180deg, #ff8fbc, #e75a97);
 }
 
 /* Selection Color */
 ::selection {
-  background: rgba(251, 191, 36, 0.3);
-  color: white;
+  background: rgba(255, 143, 188, 0.4);
+  color: #5c4a5a;
+}
+
+/* Cute button hover effect */
+.btn-kawaii {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-kawaii:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.btn-kawaii:active {
+  transform: scale(0.95);
 }

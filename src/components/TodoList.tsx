@@ -80,71 +80,64 @@ export default function TodoList() {
   const activeCount = todos.filter((todo) => !todo.completed).length;
   const completedCount = todos.filter((todo) => todo.completed).length;
 
-  const filterButtons: { type: FilterType; label: string }[] = [
-    { type: "all", label: "ทั้งหมด" },
-    { type: "active", label: "ยังไม่เสร็จ" },
-    { type: "completed", label: "เสร็จแล้ว" },
+  const filterButtons: { type: FilterType; label: string; emoji: string }[] = [
+    { type: "all", label: "ทั้งหมด", emoji: "📝" },
+    { type: "active", label: "ยังไม่เสร็จ", emoji: "⏳" },
+    { type: "completed", label: "เสร็จแล้ว", emoji: "✅" },
   ];
 
   return (
     <div className="w-full max-w-2xl">
-      {/* Header */}
+      {/* Header - Kawaii Style */}
       <div className="mb-8 text-center">
-        <h1 className="bg-gradient-to-r from-amber-200 via-orange-300 to-amber-200 bg-clip-text text-5xl font-bold tracking-tight text-transparent">
-          Todo List
-        </h1>
-        <p className="mt-2 text-white/50">จัดการงานของคุณอย่างมีประสิทธิภาพ</p>
+        <div className="mb-2 flex items-center justify-center gap-2">
+          <span className="animate-bounce-soft text-4xl">🌸</span>
+          <h1 className="bg-gradient-to-r from-pink-400 via-pink-500 to-purple-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent">
+            Todo List
+          </h1>
+          <span className="animate-bounce-soft text-4xl" style={{ animationDelay: '0.5s' }}>🌸</span>
+        </div>
+        <p className="text-lg text-pink-400">✨ จัดการงานให้ชีวิตสดใส ✨</p>
       </div>
 
-      {/* Add Todo Form */}
+      {/* Add Todo Form - Kawaii Style */}
       <form onSubmit={addTodo} className="mb-8">
-        <div className="group relative">
-          <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 opacity-20 blur transition duration-300 group-focus-within:opacity-40" />
-          <div className="relative flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-2 backdrop-blur-sm">
+        <div className="relative">
+          <div className="flex items-center gap-3 rounded-3xl border-3 border-pink-200 bg-white p-2 shadow-lg shadow-pink-100 transition-all duration-300 focus-within:border-pink-400 focus-within:shadow-pink-200">
+            <span className="pl-3 text-2xl">📌</span>
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="เพิ่มงานใหม่..."
-              className="flex-1 bg-transparent px-4 py-3 text-lg text-white outline-none placeholder:text-white/30"
+              placeholder="เพิ่มงานใหม่ที่นี่นะ..."
+              className="flex-1 bg-transparent px-2 py-3 text-lg text-[#5c4a5a] outline-none placeholder:text-pink-300"
             />
             <button
               type="submit"
               disabled={!inputValue.trim()}
-              className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-lg shadow-amber-500/25 transition-all duration-300 hover:scale-105 hover:shadow-amber-500/40 disabled:opacity-50 disabled:hover:scale-100"
+              className="btn-kawaii flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-400 to-pink-500 text-white shadow-md shadow-pink-200 transition-all duration-300 hover:from-pink-500 hover:to-pink-600 hover:shadow-lg disabled:opacity-50 disabled:hover:from-pink-400"
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
+              <span className="text-xl">➕</span>
             </button>
           </div>
         </div>
       </form>
 
-      {/* Filter Tabs */}
-      <div className="mb-6 flex items-center justify-between">
-        <div className="flex gap-2 rounded-xl bg-white/5 p-1">
-          {filterButtons.map(({ type, label }) => (
+      {/* Filter Tabs - Kawaii Pills */}
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex gap-2 rounded-full bg-pink-50 p-1.5 shadow-inner">
+          {filterButtons.map(({ type, label, emoji }) => (
             <button
               key={type}
               onClick={() => setFilter(type)}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ${
+              className={`btn-kawaii flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                 filter === type
-                  ? "bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-lg shadow-amber-500/25"
-                  : "text-white/60 hover:text-white"
+                  ? "bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow-md shadow-pink-200"
+                  : "text-pink-400 hover:bg-pink-100"
               }`}
             >
-              {label}
+              <span>{emoji}</span>
+              <span>{label}</span>
             </button>
           ))}
         </div>
@@ -152,9 +145,10 @@ export default function TodoList() {
         {completedCount > 0 && (
           <button
             onClick={clearCompleted}
-            className="text-sm text-white/40 transition-colors hover:text-red-400"
+            className="btn-kawaii flex items-center gap-1 rounded-full border-2 border-red-200 bg-red-50 px-4 py-2 text-sm text-red-400 transition-all hover:border-red-300 hover:bg-red-100"
           >
-            ล้างที่เสร็จแล้ว
+            <span>🧹</span>
+            <span>ล้างที่เสร็จแล้ว</span>
           </button>
         )}
       </div>
@@ -162,32 +156,23 @@ export default function TodoList() {
       {/* Todo List */}
       <div className="space-y-3">
         {!isLoaded ? (
-          <div className="flex justify-center py-12">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-amber-500 border-t-transparent" />
+          <div className="flex flex-col items-center justify-center py-12">
+            <div className="animate-bounce-soft text-5xl">🌸</div>
+            <p className="mt-4 text-pink-400">กำลังโหลด...</p>
           </div>
         ) : filteredTodos.length === 0 ? (
           <div className="py-12 text-center">
-            <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white/5">
-              <svg
-                className="h-10 w-10 text-white/20"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={1.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                />
-              </svg>
+            <div className="mx-auto mb-4 flex h-24 w-24 animate-float items-center justify-center rounded-full bg-gradient-to-br from-pink-100 to-purple-100">
+              <span className="text-5xl">
+                {filter === "all" ? "📝" : filter === "active" ? "🎉" : "🔍"}
+              </span>
             </div>
-            <p className="text-white/40">
+            <p className="text-lg text-pink-400">
               {filter === "all"
-                ? "ยังไม่มีงาน เพิ่มงานใหม่เลย!"
+                ? "ยังไม่มีงานเลย! เพิ่มงานใหม่กันเถอะ ✨"
                 : filter === "active"
-                ? "ไม่มีงานที่ต้องทำ"
-                : "ยังไม่มีงานที่เสร็จ"}
+                ? "ว้าว! ทำเสร็จหมดแล้ว! 🎊"
+                : "ยังไม่มีงานที่เสร็จเลยนะ 💪"}
             </p>
           </div>
         ) : (
@@ -195,7 +180,7 @@ export default function TodoList() {
             <div
               key={todo.id}
               className="animate-fadeIn"
-              style={{ animationDelay: `${index * 50}ms` }}
+              style={{ animationDelay: `${index * 80}ms` }}
             >
               <TodoItem
                 todo={todo}
@@ -208,15 +193,22 @@ export default function TodoList() {
         )}
       </div>
 
-      {/* Footer Stats */}
+      {/* Footer Stats - Cute Style */}
       {todos.length > 0 && (
-        <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-sm text-white/40">
-          <span>
-            {activeCount} งานที่ต้องทำ
-          </span>
-          <span>
-            {completedCount} เสร็จแล้ว
-          </span>
+        <div className="mt-8 flex items-center justify-center gap-6 rounded-2xl border-2 border-pink-100 bg-white/80 p-4 shadow-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-xl">📋</span>
+            <span className="text-pink-500">
+              <strong>{activeCount}</strong> งานที่ต้องทำ
+            </span>
+          </div>
+          <div className="h-6 w-px bg-pink-200" />
+          <div className="flex items-center gap-2">
+            <span className="text-xl">💖</span>
+            <span className="text-purple-500">
+              <strong>{completedCount}</strong> เสร็จแล้ว
+            </span>
+          </div>
         </div>
       )}
     </div>

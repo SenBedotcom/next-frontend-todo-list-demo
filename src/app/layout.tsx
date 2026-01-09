@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, JetBrains_Mono } from "next/font/google";
+import { Outfit, M_PLUS_Rounded_1c } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -8,14 +8,15 @@ const outfit = Outfit({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-geist-mono",
+const mPlusRounded = M_PLUS_Rounded_1c({
+  variable: "--font-jp",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Todo List | จัดการงานของคุณ",
-  description: "แอพจัดการงานที่สวยงามและใช้งานง่าย สร้างด้วย Next.js",
+  title: "🌸 Todo List | จัดการงานสุดคาวาอิ",
+  description: "แอพจัดการงานสไตล์ญี่ปุ่น น่ารักๆ สร้างด้วย Next.js",
 };
 
 export default function RootLayout({
@@ -26,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="th">
       <body
-        className={`${outfit.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${outfit.variable} ${mPlusRounded.variable} font-sans antialiased`}
       >
         {children}
       </body>

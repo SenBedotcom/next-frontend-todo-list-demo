@@ -37,33 +37,25 @@ export default function TodoItem({
 
   return (
     <div
-      className={`group relative flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 hover:border-amber-500/30 hover:bg-white/10 ${
-        todo.completed ? "opacity-60" : ""
+      className={`group relative flex items-center gap-4 rounded-3xl border-2 border-pink-200 bg-white p-4 shadow-md shadow-pink-100 transition-all duration-300 hover:-translate-y-1 hover:border-pink-300 hover:shadow-lg hover:shadow-pink-200 ${
+        todo.completed ? "bg-pink-50/50" : ""
       }`}
     >
-      {/* Custom Checkbox */}
+      {/* Kawaii Checkbox - Heart Style */}
       <button
         onClick={() => onToggle(todo.id)}
-        className={`relative h-6 w-6 flex-shrink-0 rounded-lg border-2 transition-all duration-300 ${
+        className={`btn-kawaii relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border-2 transition-all duration-300 ${
           todo.completed
-            ? "border-amber-500 bg-gradient-to-br from-amber-400 to-orange-500"
-            : "border-white/30 hover:border-amber-400"
+            ? "border-pink-400 bg-gradient-to-br from-pink-300 to-pink-400"
+            : "border-pink-200 bg-white hover:border-pink-300 hover:bg-pink-50"
         }`}
       >
-        {todo.completed && (
-          <svg
-            className="absolute inset-0 m-auto h-4 w-4 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={3}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
+        {todo.completed ? (
+          <span className="animate-pulse-heart text-lg">💖</span>
+        ) : (
+          <span className="text-sm text-pink-300 transition-all group-hover:text-pink-400">
+            ♡
+          </span>
         )}
       </button>
 
@@ -76,40 +68,36 @@ export default function TodoItem({
           onBlur={handleSubmit}
           onKeyDown={handleKeyDown}
           autoFocus
-          className="flex-1 bg-transparent text-lg text-white outline-none placeholder:text-white/30"
+          className="flex-1 rounded-xl border-2 border-pink-200 bg-pink-50 px-3 py-1 text-lg text-[#5c4a5a] outline-none placeholder:text-pink-300 focus:border-pink-400"
         />
       ) : (
         <span
           onDoubleClick={() => setIsEditing(true)}
           className={`flex-1 cursor-pointer text-lg transition-all duration-300 ${
             todo.completed
-              ? "text-white/40 line-through decoration-amber-500/50"
-              : "text-white"
+              ? "text-pink-300 line-through decoration-pink-400 decoration-wavy decoration-2"
+              : "text-[#5c4a5a]"
           }`}
         >
           {todo.text}
         </span>
       )}
 
-      {/* Delete Button */}
+      {/* Cute Delete Button */}
       <button
         onClick={() => onDelete(todo.id)}
-        className="flex h-8 w-8 items-center justify-center rounded-lg opacity-0 transition-all duration-300 hover:bg-red-500/20 group-hover:opacity-100"
+        className="btn-kawaii flex h-8 w-8 items-center justify-center rounded-full opacity-0 transition-all duration-300 hover:bg-red-50 group-hover:opacity-100"
+        title="ลบ"
       >
-        <svg
-          className="h-5 w-5 text-red-400 transition-colors hover:text-red-300"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-          />
-        </svg>
+        <span className="text-lg transition-transform hover:scale-125">🗑️</span>
       </button>
+
+      {/* Decorative sparkle on completed */}
+      {todo.completed && (
+        <div className="absolute -right-1 -top-1 animate-sparkle">
+          <span className="text-lg">✨</span>
+        </div>
+      )}
     </div>
   );
 }

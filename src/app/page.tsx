@@ -2,31 +2,46 @@ import TodoList from "@/components/TodoList";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#0c0a09]">
-      {/* Animated Background Elements */}
+    <div className="relative min-h-screen overflow-hidden bg-kawaii-gradient">
+      {/* Kawaii Background Decorations */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Gradient Orbs */}
-        <div className="animate-pulse-glow absolute -left-40 -top-40 h-96 w-96 rounded-full bg-gradient-to-br from-amber-500/20 to-orange-500/10 blur-3xl" />
-        <div className="animate-pulse-glow absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-gradient-to-br from-orange-500/20 to-amber-500/10 blur-3xl" style={{ animationDelay: '1.5s' }} />
-        <div className="animate-float absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-amber-400/5 to-transparent blur-2xl" />
+        {/* Floating Elements */}
+        <div className="animate-float absolute left-[10%] top-[15%] text-4xl opacity-40" style={{ animationDelay: '0s' }}>🌸</div>
+        <div className="animate-float absolute right-[15%] top-[20%] text-3xl opacity-40" style={{ animationDelay: '1s' }}>⭐</div>
+        <div className="animate-float absolute left-[20%] bottom-[25%] text-3xl opacity-40" style={{ animationDelay: '2s' }}>🎀</div>
+        <div className="animate-float absolute right-[10%] bottom-[30%] text-4xl opacity-40" style={{ animationDelay: '0.5s' }}>✨</div>
+        <div className="animate-float absolute left-[5%] top-[50%] text-2xl opacity-30" style={{ animationDelay: '1.5s' }}>💫</div>
+        <div className="animate-float absolute right-[5%] top-[60%] text-3xl opacity-30" style={{ animationDelay: '2.5s' }}>🌙</div>
+        <div className="animate-float absolute left-[15%] top-[80%] text-2xl opacity-30" style={{ animationDelay: '3s' }}>💖</div>
+        <div className="animate-float absolute right-[20%] top-[10%] text-2xl opacity-30" style={{ animationDelay: '3.5s' }}>🍡</div>
+        
+        {/* Cute Cloud Shapes */}
+        <div className="absolute -left-20 top-20 h-40 w-60 rounded-full bg-pink-100/50 blur-3xl" />
+        <div className="absolute -right-20 top-40 h-32 w-48 rounded-full bg-purple-100/50 blur-3xl" />
+        <div className="absolute bottom-20 left-1/4 h-36 w-52 rounded-full bg-blue-100/30 blur-3xl" />
 
-        {/* Grid Pattern */}
-        <div className="bg-grid absolute inset-0" />
-
-        {/* Noise Texture */}
-        <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
+        {/* Dotted Pattern Overlay */}
+        <div className="bg-kawaii-dots absolute inset-0 opacity-30" />
       </div>
 
       {/* Main Content */}
       <main className="relative flex min-h-screen flex-col items-center justify-center px-4 py-12">
-        {/* Decorative Elements */}
-        <div className="absolute left-8 top-8 flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-amber-500" />
-          <div className="h-2 w-8 rounded-full bg-gradient-to-r from-amber-500/50 to-transparent" />
+        {/* Corner Decorations */}
+        <div className="absolute left-6 top-6 flex items-center gap-1">
+          <span className="text-2xl">🎀</span>
+          <div className="h-2 w-12 rounded-full bg-gradient-to-r from-pink-300 to-transparent" />
         </div>
-        <div className="absolute bottom-8 right-8 flex items-center gap-2">
-          <div className="h-2 w-8 rounded-full bg-gradient-to-l from-orange-500/50 to-transparent" />
-          <div className="h-2 w-2 rounded-full bg-orange-500" />
+        <div className="absolute right-6 top-6 flex items-center gap-1">
+          <div className="h-2 w-12 rounded-full bg-gradient-to-l from-purple-300 to-transparent" />
+          <span className="text-2xl">⭐</span>
+        </div>
+        <div className="absolute bottom-6 left-6 flex items-center gap-1">
+          <span className="text-2xl">💖</span>
+          <div className="h-2 w-12 rounded-full bg-gradient-to-r from-pink-300 to-transparent" />
+        </div>
+        <div className="absolute bottom-6 right-6 flex items-center gap-1">
+          <div className="h-2 w-12 rounded-full bg-gradient-to-l from-purple-300 to-transparent" />
+          <span className="text-2xl">🌸</span>
         </div>
 
         {/* Todo List Component */}
@@ -35,8 +50,10 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="absolute bottom-4 text-center text-sm text-white/20">
-          <p>สร้างด้วย Next.js & Tailwind CSS</p>
+        <footer className="absolute bottom-4 flex items-center gap-2 text-center text-sm text-pink-400/60">
+          <span>🌸</span>
+          <p>สร้างด้วยความรัก | Next.js & Tailwind CSS</p>
+          <span>🌸</span>
         </footer>
       </main>
     </div>
